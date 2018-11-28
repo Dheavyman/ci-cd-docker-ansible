@@ -10,5 +10,7 @@ venv
 # Ignore SQlite database files
 *.sqlite3
 
+node_modules/
+
 todobackend/src/.coverage
 todobackend/src/*.xml

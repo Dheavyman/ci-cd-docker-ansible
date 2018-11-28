@@ -1,3 +1,6 @@
+# Ignore IDE files
+.idea
+
 # Ignore the virtual environment
 venv
 
@@ -7,3 +10,5 @@ venv
 # Ignore SQlite database files
 *.sqlite3
 
+todobackend/src/.coverage
+todobackend/src/*.xml

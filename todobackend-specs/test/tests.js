@@ -1,17 +1,17 @@
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
-const Promise = require('bluebird');
-const request = require('superagent-promise')(require('superagent'), Promise);
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+var Promise = require('bluebird');
+var request = require('superagent-promise')(require('superagent'), Promise);
 
 chai.use(chaiAsPromised);
 
-const should = chai.should;
-const expect = chai.expect;
+var should = chai.should;
+var expect = chai.expect;
 
-const url = process.env.URL || 'http://localhost:8000/todos';
+var url = process.env.URL || 'http://localhost:8000/todos';
 
 describe('Cross Origin Requests', () => {
-  let result;
+  var result;
 
   before(() => {
     result = request('OPTIONS', url)
@@ -33,7 +33,7 @@ describe('Cross Origin Requests', () => {
 });
 
 describe('Create Todo Item', () => {
-  let result;
+  var result;
 
   before(() => {
     result = post(url, { title: 'Walk the dog' });
@@ -49,7 +49,7 @@ describe('Create Todo Item', () => {
   });
 
   it('should create the item', () => {
-    const item = result.then((res) => {
+    var item = result.then((res) => {
       return get(res.header['location']);
     });
 
@@ -62,7 +62,7 @@ describe('Create Todo Item', () => {
 });
 
 describe('Update Todo Item', () => {
-  let location;
+  var location;
 
   beforeEach((done) => {
     post(url, { title: 'Walk the dog' })
@@ -73,13 +73,13 @@ describe('Update Todo Item', () => {
   });
 
   it('should have completed set to true after PUT update', () => {
-    const result = update(location, 'PUT', { completed: true });
+    var result = update(location, 'PUT', { completed: true });
 
     return assert(result, 'body.completed').to.be.true;
   });
 
   it('should have completed set to true after a PATCH update', () => {
-    const result = update(location, 'PATCH', { completed: true });
+    var result = update(location, 'PATCH', { completed: true });
 
     return assert(result, 'body.completed').to.be.true;
   });
@@ -90,7 +90,7 @@ describe('Update Todo Item', () => {
 });
 
 describe('Delete Todo Item', () => {
-  let location;
+  var location;
 
   beforeEach((done) => {
     post(url, { title: 'Walk the dog' })
@@ -101,13 +101,13 @@ describe('Delete Todo Item', () => {
   });
 
   it('should return a 204 NO CONTENT response', () => {
-    const result = del(location);
+    var result = del(location);
 
     return assert(result, 'status').to.equal(204);
   });
 
   it('should delete the item', () => {
-    const result = del(location).then((res) => {
+    var result = del(location).then((res) => {
       return get(location);
     });
 
@@ -152,5 +152,5 @@ function update(url, method, data) {
 
 // Resolve promise for property and return expectation
 function assert(result, prop) {
-  return expect(result).to.eventually.have.deep.nested.property(prop);
+  return expect(result).to.eventually.have.deep.property(prop);
 }

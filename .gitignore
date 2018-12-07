@@ -1,5 +1,6 @@
 # Ignore IDE files
 .idea
+.vscode
 
 # Ignore the virtual environment
 venv

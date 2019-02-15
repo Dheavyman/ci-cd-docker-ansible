@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Justin Nebo
+LABEL maintainer="Justin Nebo"
 
 # Prevent dpkg errors
 ENV TERM=xterm-256color

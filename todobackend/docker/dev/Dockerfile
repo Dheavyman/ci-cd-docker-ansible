@@ -1,5 +1,5 @@
 FROM dheavyman/todobackend-base:latest
-MAINTAINER Justin Nebo
+LABEL maintainer="Justin Nebo"
 
 # Install dev/build dependencies
 RUN apt-get update && \

@@ -1,5 +1,5 @@
 FROM dheavyman/todobackend-base
-MAINTAINER Justin Nebo
+LABEL maintainer="Justin Nebo"
 
 # Copy application artifacts
 COPY target /wheelhouse

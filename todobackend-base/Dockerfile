@@ -1,11 +1,11 @@
 FROM ubuntu:trusty
-LABEL maintainer="Justin Nebo"
+LABEL maintainer="Justin Nebo" application=todobackend
 
 # Prevent dpkg errors
 ENV TERM=xterm-256color
 
 # Set mirrors to NZ
-RUN sed -i "s/http:\/\/archive./http:\/\/nz.archive./g" /etc/apt/sources.list
+# RUN sed -i "s/http:\/\/archive./http:\/\/nz.archive./g" /etc/apt/sources.list
 
 # Install Python runtime
 RUN apt-get update && \
